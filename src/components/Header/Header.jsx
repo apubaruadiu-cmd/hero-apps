@@ -20,7 +20,7 @@ const Header = () => {
 
       <li className="m-2">
         <NavLink
-          to="/apps"
+          to="/appList"
           className={({ isActive }) =>
             isActive
               ? "relative pb-2 font-semibold bg-gradient-to-br from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:bg-gradient-to-r after:from-[#632EE3] after:to-[#9F62F2] after:content-['']"
