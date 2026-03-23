@@ -1,19 +1,48 @@
 import React from "react";
 import logo from "../../assets/logo.png";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Header = () => {
   const links = (
     <>
-      <Link to="/" className="p-2">
-        <li>Home</li>
-      </Link>
-      <Link to="/apps" className="p-2">
-        <li>Apps</li>
-      </Link>
-      <Link to="/installation" className="p-2">
-        <li>Installation</li>
-      </Link>
+      <li className="m-2">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "relative pb-2 font-semibold bg-gradient-to-br from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:bg-gradient-to-r after:from-[#632EE3] after:to-[#9F62F2] after:content-['']"
+              : "pb-2 hover:text-[#632EE3] transition"
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+
+      <li className="m-2">
+        <NavLink
+          to="/apps"
+          className={({ isActive }) =>
+            isActive
+              ? "relative pb-2 font-semibold bg-gradient-to-br from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:bg-gradient-to-r after:from-[#632EE3] after:to-[#9F62F2] after:content-['']"
+              : "pb-2 hover:text-[#632EE3] transition"
+          }
+        >
+          Apps
+        </NavLink>
+      </li>
+
+      <li className="m-2">
+        <NavLink
+          to="/installation"
+          className={({ isActive }) =>
+            isActive
+              ? "relative pb-2 font-semibold bg-gradient-to-br from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:bg-gradient-to-r after:from-[#632EE3] after:to-[#9F62F2] after:content-['']"
+              : "pb-2 hover:text-[#632EE3] transition"
+          }
+        >
+          Installation
+        </NavLink>
+      </li>
     </>
   );
   return (
@@ -53,7 +82,11 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn text-white bg-gradient-to-br from-[#632EE3] to-[#9F62F2] font-semibold" href="https://github.com/apubaruadiu-cmd" target="_blank">
+          <a
+            className="btn text-white bg-gradient-to-br from-[#632EE3] to-[#9F62F2] font-semibold"
+            href="https://github.com/apubaruadiu-cmd"
+            target="_blank"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
