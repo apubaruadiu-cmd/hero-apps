@@ -1,5 +1,6 @@
 import React from 'react';
 import SingleApp from '../SingleApp/SingleApp';
+import { Link } from 'react-router';
 
 const Apps = ({data}) => {
     const homeApps = data.slice(0, 8);
@@ -13,6 +14,9 @@ const Apps = ({data}) => {
                 {
                     homeApps.map(singleApp => <SingleApp key={singleApp.id} singleApp={singleApp}></SingleApp>)
                 }
+            </div>
+            <div className='text-center mt-10'>
+                <Link className='text-white bg-gradient-to-br from-[#632EE3] to-[#9F62F2] font-semibold py-3 px-4 rounded-sm' to='/appList'>Show All</Link>
             </div>
         </div>
     );
