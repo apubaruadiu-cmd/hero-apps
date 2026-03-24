@@ -5,6 +5,8 @@ import download from "../../assets/download.png";
 import rating from "../../assets/raing.png";
 import review from "../../assets/review.png";
 import { ToastContainer, toast } from "react-toastify";
+import { ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
 
 const AppsDetails = () => {
   const [installed, setInstalled] = useState(false);
@@ -24,6 +26,13 @@ const AppsDetails = () => {
     description,
   } = singleApp;
 
+  const chartData = singleApp.ratings
+    .map((item) => ({
+      name: item.name,
+      count: item.count,
+    }))
+    .reverse();
+
   const handleInstall = () => {
     setInstalled(true);
     toast.success(`${title} installed successfully!`);
@@ -31,7 +40,7 @@ const AppsDetails = () => {
 
   return (
     <div className="max-w-11/12 mx-auto py-20">
-      <div className="flex gap-10 w-full items-start border-b-1 border-gray-300 pb-10 mb-10">
+      <div className="flex gap-10 w-full items-start border-b-1 border-gray-300 pb-10 mb-10 flex-wrap">
         <img src={image} alt="" />
         <div className="flex-1">
           <div className="border-b-1 border-gray-300 pb-7 mb-7">
@@ -43,7 +52,7 @@ const AppsDetails = () => {
               </strong>
             </p>
           </div>
-          <div className="flex gap-6">
+          <div className="flex gap-6 flex-wrap">
             <div className="w-[150px]">
               <img src={download} alt="" />
               <p className="my-2 text-md text-[#00193180]">Downloads</p>
@@ -78,6 +87,31 @@ const AppsDetails = () => {
 
           <ToastContainer />
         </div>
+      </div>
+      <div>
+        <h2 className="text-2xl font-semibold text-[#001931] mb-4">Ratings</h2>
+
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart
+            data={chartData}
+            layout="vertical" // 🔥 makes horizontal bars
+            margin={{ top: 10, right: 30, left: 0, bottom: 10 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" horizontal={false} vertical={false} />
+
+            <XAxis type="number" axisLine={false} tickLine={false} />
+
+            <YAxis type="category" dataKey="name" axisLine={false} tickLine={false} width={80} />
+
+            <Tooltip />
+
+            <Bar
+              dataKey="count"
+              fill="#F81"
+              barSize={20}
+            />
+          </BarChart>
+        </ResponsiveContainer>
       </div>
       <div className="border-t-1 border-gray-300 pt-10 mt-10">
         <h2 className="text-2xl font-semibold text-[#001931]">Description</h2>
