@@ -23,13 +23,13 @@ const AppList = () => {
         </p>
       </div>
 
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4 flex-wrap">
         <div className="text-[#001931] text-2xl font-semibold">
           ({filteredApps.length}) Apps Found
         </div>
 
         <form>
-          <div className="flex items-center gap-2.5 border border-[#D2D2D2] rounded-sm w-[400px] py-3 px-4">
+          <div className="flex items-center gap-2.5 border border-[#D2D2D2] rounded-sm md:w-[400px] py-3 px-4">
             <IoSearch />
             <input
               type="text"
